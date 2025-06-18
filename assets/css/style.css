@@ -1,0 +1,17 @@
+#carrito button {
+  margin: 5px 5px 0 0;
+  padding: 6px 12px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#carrito button:hover {
+  background-color: #c0392b;
+}
+
+#items-carrito li {
+  margin: 5px 0;
+}
