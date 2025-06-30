@@ -10,6 +10,7 @@ function cargarProductosEnPantalla() {
     div.className = "producto";
 
     div.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
       <h3>${producto.nombre}</h3>
       <p>Precio: $${producto.precio}</p>
       <button onclick="agregarAlCarrito(${index})">Agregar al carrito</button>
@@ -22,12 +23,24 @@ function cargarProductosEnPantalla() {
 // Agrega el producto al carrito
 function agregarAlCarrito(indice) {
   const producto = productos[indice];
-  carrito.push(producto);
+
+  // Buscar si ya está en el carrito
+  const productoEnCarrito = carrito.find(item => item.nombre === producto.nombre);
+
+  if (productoEnCarrito) {
+    // Si ya está, sumamos 1 a la cantidad
+    productoEnCarrito.cantidad += 1;
+  } else {
+    // Si no está, lo agregamos con cantidad 1
+    carrito.push({ ...producto, cantidad: 1 });
+  }
+
   total += producto.precio;
 
   guardarCarritoEnLocalStorage();
   mostrarCarrito();
 }
+
 
 // Muestra el carrito en el DOM
 function mostrarCarrito() {
@@ -38,8 +51,11 @@ function mostrarCarrito() {
   carrito.forEach((item, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.nombre} - $${item.precio}
       <button onclick="eliminarDelCarrito(${index})">❌</button>
+      ${item.cantidad} unidades de  ${item.nombre} de $${item.precio} = $${item.precio * item.cantidad}
+      
+      <button onclick="restarAlCarrito(${index})">➖</button>
+      <button onclick="sumarAlCarrito(${index})">➕</button>
     `;
     ul.appendChild(li);
   });
@@ -47,16 +63,18 @@ function mostrarCarrito() {
   totalTexto.textContent = `Total a pagar: $${total}`;
 }
 
+
 // Elimina el producto específico del carrito
 function eliminarDelCarrito(indice) {
-  total -= carrito[indice].precio;
+  total -= carrito[indice].precio * carrito[indice].cantidad;
   carrito.splice(indice, 1);
 
   guardarCarritoEnLocalStorage();
   mostrarCarrito();
 }
 
-// Vacia todo el carrito
+
+// Vacía todo el carrito
 function vaciarCarrito() {
   carrito = [];
   total = 0;
@@ -91,4 +109,24 @@ function cargarCarritoDesdeLocalStorage() {
     total = parseFloat(totalGuardado);
     mostrarCarrito();
   }
+}
+function sumarAlCarrito(indice) {
+  carrito[indice].cantidad += 1;
+  total += carrito[indice].precio;
+
+  guardarCarritoEnLocalStorage();
+  mostrarCarrito();
+}
+function restarAlCarrito(indice) {
+  if (carrito[indice].cantidad > 1) {
+    carrito[indice].cantidad -= 1;
+    total -= carrito[indice].precio;
+  } else {
+    // Si llega a 1 y queremos restar, lo eliminamos del carrito
+    total -= carrito[indice].precio;
+    carrito.splice(indice, 1);
+  }
+
+  guardarCarritoEnLocalStorage();
+  mostrarCarrito();
 }
