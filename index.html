@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="es"> 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Onlyplast - 2da pre entrega</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  
-  <section class="tituloysubtitulo">
-    <h1>Onlyplast</h1> 
-    <p>Seleccioná los productos que querés agregar al carrito:</p>
-  </section>
-  <section id="lista-productos"></section> 
-
-  <hr />
-
-  <section id="gridsito">
-  <img class="michicompania" alt ="lafoto">
-
-  <article id="carrito">
-  <h2>Carrito de compras</h2>
-  <ul id="items-carrito"></ul>
-  <p id="total"></p>
-
-  <button id="vaciarCarrito">Vacia el carrito</button>
-  <button id="finalizarCompra">Finaliza la compra</button>
-</article>
-  <img class="michicompania" alt ="lafoto">
-</section>
-  <!-- Referencias a los scripts -->
-  <script src="js/03funciones.js"></script>
-  <script src="js/01main.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Entrega Final Cilio</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  </head>
+  <body>
+    <section class="tituloysubtitulo">
+      <h1>Onlyplast</h1> 
+      <p>Seleccioná los productos que querés agregar al carrito:</p>
+    </section>
+    <section id="lista-productos"></section> 
+    <hr />
+    <section id="gridsito">
+      <div class="michi">
+          <img class="michi_compania" alt="imagen izquierda">
+          <button id="activarIzquierda">Activar Ascesor Gatuno</button>
+      </div>
+      <article id="carrito">
+        <h2>Carrito de compras</h2>
+        <ul id="items-carrito"></ul>
+        <p id="total"></p>
+        <button id="vaciarCarrito">Vacia el carrito</button>
+        <button id="finalizarCompra">Finaliza la compra</button>
+      </article>
+      <div class="michi ">
+        <img class="michi_compania" alt="imagen derecha">
+        <button id="activarDerecha">Activar Ascesor Gatuno</button>
+      </div>
+    </section>
+    <!-- Referencias a los scripts -->
+    <script src="js/02funciones.js"></script>
+    <script src="js/01main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  </body>
 </html>

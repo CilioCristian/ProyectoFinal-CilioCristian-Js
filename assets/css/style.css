@@ -58,8 +58,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-.michicompania{
-  height: 400px;
-  width: 400px;
-  
+.michi_compania {
+  display: none;
+  width: 150px;
+  transition: filter 0.3s, opacity 0.3s;
+}
+.michi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
