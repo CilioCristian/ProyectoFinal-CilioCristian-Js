@@ -1,5 +1,3 @@
-let carrito = [];
-let total = 0;
 
 // Carga los productos al DOM
 function cargarProductosEnPantalla() {
@@ -130,3 +128,18 @@ function restarAlCarrito(indice) {
   guardarCarritoEnLocalStorage();
   mostrarCarrito();
 }
+//https://api.thecatapi.com/v1/images/search
+const URL = 'https://api.thecatapi.com/v1/images/search';
+
+fetch(URL)
+  .then(res => res.json())
+  .then(data => {
+    const imgs = document.querySelectorAll(".michicompania");
+    imgs.forEach((img, index) => {
+      fetch(URL)
+        .then(res => res.json())
+        .then(data => {
+          img.src = data[0].url;
+        });
+    });
+  });
