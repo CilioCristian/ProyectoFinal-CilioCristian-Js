@@ -188,7 +188,7 @@ function sumarAlCarrito(indice) {
     duration: 1500,
     gravity: "top",
     position: "right",
-    backgroundColor: "linear-gradient(to right, #4facfe, #00f2fe)",
+    backgroundColor: "linear-gradient(to right, #00ff15ff, #eeff00ff)",
   }).showToast();
 }
 
